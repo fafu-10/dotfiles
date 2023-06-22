@@ -1,2 +1,3 @@
 # dotfiles
-Tasty rice inside
+I use fedora btw
+
