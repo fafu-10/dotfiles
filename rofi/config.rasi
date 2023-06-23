@@ -1,0 +1,8 @@
+configuration {
+	display-drun: "Applications: ";
+	drun-dsiplay-format: "{icon} {name}"; 
+
+
+
+}
+@theme "/usr/share/rofi/themes/dmenu.rasi"
