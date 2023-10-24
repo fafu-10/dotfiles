@@ -23,6 +23,9 @@ font pango:monospace 9
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# Auto tiling
+exec --no-startup-id ~/.config/i3-alternating-layout/alternating_layouts.py
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -190,35 +193,29 @@ bindsym $mod+r mode "resize"
 #	position bottom
 #}
 #bindsym $mod+shift+x exec betterlockscreen -l dim 0.5
-#bindsym $mod+shift+x exec i3lock-color
 exec_always nitrogen --restore
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc 
 exec_always ~/.config/polybar/launch.sh
 exec_always picom 
-#--experimental-backends -b
+
 
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
 #Terminal scratchpad
 exec --no-startup-id kitty --name=scratchkitty
 for_window [instance="scratchkitty"] floating enable
 for_window [instance="scratchkitty"] resize set 850 500
-#for_window [instance="scratchkitty"] move scratchpad; move scratchpad center;
 for_window [instance="scratchkitty"] move scratchpad center;
 bindsym $mod+t [instance="scratchkitty"] scratchpad show
 
 
-#Pywal
-#exec_always wal -i img.jpg -n -R
-
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 
 # Dunst
@@ -227,17 +224,16 @@ bindsym --release $mod+c exec dunstctl close
 
 # Screenshot
 bindsym --release $mod+shift+s exec spectacle -s -r -b 
-
-#Lockscreen
-bindsym --release $mod+x exec betterlockscreen -l 
-
-#flameshot gui -c
+ 
 
 # redshift on start
 exec_always redshift -O 4500
 
 # Swipe gestures
 exec_always libinput-gestures-setup start
+
+# Random wallpaper
+#bindsym --release $mod+n nitrogen --random ~/Pictures/
 
 # Remove borders from windows
 for_window [class="^.*"] border pixel 0
@@ -250,3 +246,8 @@ for_window [class="^.*"] border pixel 0
 smart_gaps off 
 gaps inner 5
 gaps outer 5
+
+# Random wallpaper
+bindsym $mod+n exec nitrogen --random --set-auto 
+#bindsym --release $mod+n exec nitrogen --restore
+
