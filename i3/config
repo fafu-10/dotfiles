@@ -24,7 +24,7 @@ font pango:monospace 9
 exec --no-startup-id dex --autostart --environment i3
 
 # Auto tiling
-exec --no-startup-id ~/.config/i3-alternating-layout/alternating_layouts.py
+#exec --no-startup-id ~/.config/i3-alternating-layout/alternating_layouts.py
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -221,6 +221,10 @@ bindsym $mod+t [instance="scratchkitty"] scratchpad show
 # Dunst
 bindsym --release $mod+c exec dunstctl close
 #bindsym --release $mod+shift+c dunstctl --close-all
+# Kill all 
+bindsym --release $mod+k exec killall -SIGUSR1 dunst
+# Restart 
+bindsym --release $mod+l exec killall -SIGUSR2 dunst notify-send "Back online"
 
 # Screenshot
 bindsym --release $mod+shift+s exec spectacle -s -r -b 
@@ -250,4 +254,5 @@ gaps outer 7
 # Random wallpaper
 bindsym $mod+n exec nitrogen --random --set-auto 
 #bindsym --release $mod+n exec nitrogen --restore
+
 
