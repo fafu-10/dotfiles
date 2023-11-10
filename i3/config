@@ -244,8 +244,8 @@ for_window [class="^.*"] border pixel 0
 # Gaps with the merge
 # smart gaps off adds border to one tab
 smart_gaps off 
-gaps inner 5
-gaps outer 5
+gaps inner 7
+gaps outer 7
 
 # Random wallpaper
 bindsym $mod+n exec nitrogen --random --set-auto 
